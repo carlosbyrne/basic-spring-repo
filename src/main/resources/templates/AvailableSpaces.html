@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Spaces</title>
+</head>
+<body>
+<h1>Our available spots:</h1>
+<ul>
+    <li th:each="space : ${spaces}" th:text="${space}"></li>
+</ul>
+</body>
+</html>
