@@ -1,0 +1,2 @@
+ALTER TABLE spaces
+ADD COLUMN price NUMERIC(10,2);

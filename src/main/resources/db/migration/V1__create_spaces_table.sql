@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS spaces
+    (id INT PRIMARY KEY,
+     name VARCHAR(200)
+    );
