@@ -5,9 +5,11 @@ import com.makers.makersbnb.repository.SpaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import lombok.*;
+import org.springframework.web.servlet.view.RedirectView;
+//import lombok.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.Optional;
 
 
 // tell Spring Boot this class is a controller
-@RestController
+@RestController // why are we using rest controller instead of controller when we are returning views?
 public class StaticPageController {
     // tell Spring Boot this method handles the 'GET "/"' request
     @Autowired
@@ -63,7 +65,30 @@ public class StaticPageController {
         return modelAndView;
     }
 
-    public Iterable<Space> allSpaces() {
+    // We use this route to generate the form
+    // Once the user fills in the form and presses submit
+    // We then call the public RedirectView create(Space space) function
+    @GetMapping("/spaces/new")
+    public ModelAndView newSpaceForm() {
+        // this is the space referred to in th:object (look back at the form code)
+        Space space = new Space();
+        ModelAndView newSpaceForm = new ModelAndView("spaces/New");
+        newSpaceForm.addObject("space", space);
+        return newSpaceForm;
+    }
+
+    @PostMapping("/spaces")
+    // Spring Boot uses the form data to create an instance of space
+    // which is then passed in as an arg here
+    public RedirectView create(Space space) {
+        spaceRepository.save(space);
+        // assumes you already created a method to handle `GET "/spaces"`
+        return new RedirectView("/spaces");
+    }
+
+
+
+    private Iterable<Space> allSpaces() {
         return spaceRepository.findAll();
     }
 }
