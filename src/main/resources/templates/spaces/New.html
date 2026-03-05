@@ -13,6 +13,8 @@
   <input type="text" th:field="*{description}"/> <br>
   <label th:for="price">Price:</label>
   <input type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" th:field="*{price}"/> <br>
+  <label th:for="rules">Rules:</label>
+  <input type="text" th:field="*{rules}"/> <br>
   <input type="submit" value="Submit"/>
   <input type="reset" value="Reset" />
 </form>

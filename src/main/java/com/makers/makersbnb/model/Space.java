@@ -25,6 +25,8 @@ public class Space {
     private String description;
     // a third field storing the price of each space
     private Double price;
+    // a fourth field storing the rules
+    private String rules;
 
     // a zero-arguments constructor
     public Space() {}
@@ -45,6 +47,8 @@ public class Space {
     public Double getPrice() { return price; }
     public void setPrice(Double price) { this.price = price; }
 
+    public String getRules() { return rules; }
+    public void setRules(String rules) { this.rules = rules; }
 }
 
 

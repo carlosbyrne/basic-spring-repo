@@ -31,7 +31,6 @@ public class StaticPageController {
         ModelAndView modelAndView = new ModelAndView("/LandingPage");
         var nSpaces = 0;
         for( Space space: allSpaces ){
-            System.out.println(space.getName());
             nSpaces++;
         }
         modelAndView.addObject("nSpaces", nSpaces);
@@ -61,7 +60,6 @@ public class StaticPageController {
             formattedSpaces.add(formattedSpace);
         }
         modelAndView.addObject("spaces", formattedSpaces);
-        System.out.println(formattedSpaces);
         return modelAndView;
     }
 
